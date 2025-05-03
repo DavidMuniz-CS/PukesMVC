@@ -32,13 +32,15 @@ namespace PukesMVC.Controllers
             await dbContext.States.AddAsync(state);
             await dbContext.SaveChangesAsync();
 
-            return View();
+            //return View();
+            return RedirectToAction("List", "States");
         }
 
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var states = await dbContext.States.ToListAsync();
+            var states = await dbContext.States
+                .ToListAsync();
             return View(states);
         }
 
