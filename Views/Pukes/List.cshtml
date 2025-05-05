@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<PukesMVC.Models.Entities.Puke>
+
+<div>
+    <a asp-area="" asp-controller="Pukes" asp-action="Add">Add Puke</a>
+</div>
+
+<h1>All Pukes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Puke
+            <th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var puke in Model)
+        {
+            <tr>
+                <td>@puke.Notes</td>
+                <td>@puke.CreateDate</td>
+                <td>
+                    <a asp-controller="Pukes" asp-action="Edit" asp-route-id="@puke.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

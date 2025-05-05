@@ -11,5 +11,8 @@ namespace PukesMVC.Data
         }
 
         public DbSet<State> States { get; set; }
+        public DbSet<Puke> Pukes { get; set; }
+
+
     }
 }

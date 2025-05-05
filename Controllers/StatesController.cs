@@ -16,6 +16,15 @@ namespace PukesMVC.Controllers
         {
             this.dbContext = dbContext;
         }
+
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var states = await dbContext.States
+                .ToListAsync();
+            return View(states);
+        }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -34,14 +43,6 @@ namespace PukesMVC.Controllers
 
             //return View();
             return RedirectToAction("List", "States");
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> List()
-        {
-            var states = await dbContext.States
-                .ToListAsync();
-            return View(states);
         }
 
         [HttpGet]
