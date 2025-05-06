@@ -9,6 +9,7 @@ namespace PukesMVC.Models.Entities
         public DateTime CreateDate { get; set; }
         public string? Notes { get; set; }
 
-        //public virtual State State { get; set; }
+        public Guid StateId { get; set; }
+        public virtual State State { get; set; }
     }
 }

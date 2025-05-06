@@ -7,5 +7,7 @@ namespace PukesMVC.Models.Entities
         [Key]
         public Guid Id { get; set; }
         public string? Name { get; set; }
+
+        public virtual List<Puke>? Pukes { get; set; }
     }
 }

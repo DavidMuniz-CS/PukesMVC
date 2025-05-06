@@ -33,9 +33,10 @@ namespace PukesMVC.Controllers
         public async Task<IActionResult> Add(AddPukeViewModel PukeVM)
         {
 
-            var puke = new Puke();
+            Puke puke = new Puke();
             puke.CreateDate = DateTime.Now;
             puke.Notes = PukeVM.Notes;
+            puke.State.Id = PukeVM.StateId;
 
             await dbContext.Pukes.AddAsync(puke);
             await dbContext.SaveChangesAsync();
