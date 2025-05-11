@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PukesMVC.Data;
 using PukesMVC.Models.Entities;
 using PukesMVC.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PukesMVC.Controllers
 {
@@ -19,24 +20,30 @@ namespace PukesMVC.Controllers
         public async Task<IActionResult> List()
         {
             var pukes = await dbContext.Pukes
+                .Include(x => x.State)
                 .ToListAsync();
+            //ViewBag.StateName = pukes.
             return View(pukes);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
+            List<State> states = dbContext.States.ToList();
+            ViewBag.States = new SelectList(states, "Id", "Name");
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(AddPukeViewModel PukeVM)
         {
+            State state = dbContext.States.Find(PukeVM.StateId);
 
             Puke puke = new Puke();
             puke.CreateDate = DateTime.Now;
             puke.Notes = PukeVM.Notes;
-            puke.State.Id = PukeVM.StateId;
+            puke.State = state;
 
             await dbContext.Pukes.AddAsync(puke);
             await dbContext.SaveChangesAsync();
