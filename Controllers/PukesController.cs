@@ -19,11 +19,10 @@ namespace PukesMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var pukes = await dbContext.Pukes
-                .Include(x => x.State)
-                .ToListAsync();
-            //ViewBag.StateName = pukes.
-            return View(pukes);
+            var list = (from x in dbContext.Pukes
+                        orderby x.State.Name
+                        select x).Include(l => l.State).ToList();
+            return View(list);
         }
 
         [HttpGet]

@@ -12,8 +12,8 @@ using PukesMVC.Data;
 namespace PukesMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250506123419_AddedOneToManyRelationshipBetweenPukeAndStateClasses")]
-    partial class AddedOneToManyRelationshipBetweenPukeAndStateClasses
+    [Migration("20250515043739_Initial Create")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
