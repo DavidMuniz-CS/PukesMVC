@@ -17,7 +17,11 @@
         <tr>
             <th>
                 Puke
+            </th>
             <th>
+                Notes
+            </th>
+            <th></th>
         </tr>
     </thead>
 
@@ -27,7 +31,6 @@
             <tr>
                 <td>@puke.State.Name</td>
                 <td>@puke.Notes</td>
-                <td>@puke.CreateDate</td>
                 <td>
                     <a asp-controller="Pukes" asp-action="Edit" asp-route-id="@puke.Id">Edit</a>
                 </td>
